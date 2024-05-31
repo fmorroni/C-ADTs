@@ -4,18 +4,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void escape(char* s, char c) {
+  s[0] = '\\';
+  s[1] = c;
+  s[2] = 0;
+}
+
 void printChar(char* c) {
   char s[3];
   switch (*c) {
   case '\n':
-    s[0] = '\\';
-    s[1] = 'n';
-    s[2] = 0;
+    escape(s, 'n');
     break;
   case '\t':
-    s[0] = '\\';
-    s[1] = 't';
-    s[2] = 0;
+    escape(s, 't');
     break;
   default:
     s[0] = *c;
