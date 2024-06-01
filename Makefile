@@ -19,10 +19,6 @@ ADT_FILES := $(patsubst $(SRC_DIR)/%,%,$(SOURCES))
 TEST_SOURCES := $(wildcard $(TESTS_DIR)/*.c)
 
 BINARIES := $(patsubst $(TESTS_DIR)/%.c, $(BIN_DIR)/%, $(TEST_SOURCES))
-# BINARY_NAMES := $(patsubst $(TESTS_DIR)/%.c, %, $(TEST_SOURCES))
-
-# SRC_OBJS := $(addprefix $(OBJ_DIR)/, $(ADT_FILES:.c=.o))
-# TEST_OBJS := $(addprefix $(OBJ_DIR)/, $(TEST_SOURCES:.c=.o))
 
 DEPS := $(addprefix $(DEPS_DIR)/, $(ADT_FILES:.c=.d)) $(addprefix $(DEPS_DIR)/, $(TEST_SOURCES:.c=.d)) $(addprefix $(DEPS_DIR)/, $(addsuffix .d, $(BINARIES)))
 
