@@ -1,8 +1,8 @@
-#include "stringBuilder.h"
-#include "arrayADT.h"
+#include <Array/array.h>
 #include <stdbool.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <StringBuilder/stringBuilder.h>
 
 void escape(char* s, char c) {
   s[0] = '\\';

@@ -1,4 +1,4 @@
-#include "arrayADT.h"
+#include <Array/array.h>
 #include <stdint.h>
 #include <stdio.h>
 #include <stdlib.h>

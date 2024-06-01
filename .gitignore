@@ -1,2 +1,8 @@
 .gdb*
 *.out
+*.d
+*.o
+*.gch
+objs/
+deps/
+bin/

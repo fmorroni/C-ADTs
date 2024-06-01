@@ -1,4 +1,4 @@
-#include "arrayADT.h"
+#include <Array/array.h>
 #include <stdio.h>
 
 void printInt(int* i) {

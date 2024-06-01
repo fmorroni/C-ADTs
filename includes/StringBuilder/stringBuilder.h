@@ -1,8 +1,8 @@
 #ifndef STRING_BUILDER_H
 #define STRING_BUILDER_H
 
+#include <Array/array.h>
 #include <stdio.h>
-#include "arrayADT.h"
 
 typedef Array StringBuilder;
 

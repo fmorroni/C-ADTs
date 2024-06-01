@@ -1,0 +1,5 @@
+CompileFlags:
+  Add:
+  - --include-directory=/home/franco/projects/C-ADTs/includes
+  # - --include-directory=/home/franco/projects/C-ADTs/includes/Array
+  # - --include-directory=/home/franco/projects/C-ADTs/includes/StringBuilder
