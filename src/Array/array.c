@@ -23,8 +23,8 @@ bool growBy(Array a, size_t extraCapacity);
 void* Array_initialize(size_t elementSize, size_t initialCapacity, PrintFn printFn, FreeEleFn freeEleFn) {
   ArrayCDT* a = malloc(sizeof(ArrayCDT));
   if (a == NULL) return NULL;
-  a->array = malloc(initialCapacity * elementSize);
-  a->capacity = initialCapacity;
+  a->capacity = initialCapacity ? initialCapacity : 1;
+  a->array = malloc(a->capacity * elementSize);
   a->length = 0;
   a->elementSize = elementSize;
   a->printFn = printFn;
