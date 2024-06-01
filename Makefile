@@ -9,6 +9,9 @@ DEPS_DIR := deps
 
 ADTS := $(notdir $(wildcard $(SRC_DIR)/*))
 
+INNER_OBJ_DIRS := $(addprefix $(OBJ_DIR)/, $(ADTS)) $(OBJ_DIR)/$(TESTS_DIR)
+INNER_DEPS_DIRS := $(addprefix $(DEPS_DIR)/, $(ADTS)) $(DEPS_DIR)/$(TESTS_DIR) $(DEPS_DIR)/$(BIN_DIR)
+
 SOURCES := $(wildcard $(SRC_DIR)/*/*.c)
 
 ADT_FILES := $(patsubst $(SRC_DIR)/%,%,$(SOURCES))
@@ -30,16 +33,18 @@ ifneq ($(MAKECMDGOALS),clean)
 include $(DEPS)
 endif
 
-$(OBJ_DIR):
+$(OBJ_DIR): $(INNER_OBJ_DIRS)
 	mkdir -p $(OBJ_DIR)
+$(INNER_OBJ_DIRS):
 	mkdir -p $(addprefix $(OBJ_DIR)/, $(ADTS))
 	mkdir -p $(OBJ_DIR)/$(TESTS_DIR)
 
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
 
-$(DEPS_DIR):
+$(DEPS_DIR): $(INNER_DEPS_DIRS)
 	mkdir -p $(DEPS_DIR)
+$(INNER_DEPS_DIRS):
 	mkdir -p $(addprefix $(DEPS_DIR)/, $(ADTS))
 	mkdir -p $(DEPS_DIR)/$(TESTS_DIR)
 	mkdir -p $(DEPS_DIR)/$(BIN_DIR)
