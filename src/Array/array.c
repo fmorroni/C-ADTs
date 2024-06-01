@@ -167,11 +167,11 @@ void copyEleAt(Array a, size_t idx, const void* ele) {
 }
 
 bool growTo(Array a, size_t newCapacity) {
-  errno = 0;
   a->capacity = newCapacity;
-  a->array = realloc(a->array, newCapacity * a->elementSize);
-  if (errno == ENOMEM) return false;
-  else return true;
+  void* aux = realloc(a->array, newCapacity * a->elementSize);
+  if (aux == NULL) return false;
+  a->array = aux;
+  return true;
 }
 
 bool growBy(Array a, size_t extraCapacity) {
