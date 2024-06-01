@@ -21,6 +21,10 @@ bool growTo(Array a, size_t newCapacity);
 bool growBy(Array a, size_t extraCapacity);
 
 void* Array_initialize(size_t elementSize, size_t initialCapacity, PrintFn printFn, FreeEleFn freeEleFn) {
+  if (elementSize == 0) {
+    errno = EINVAL;
+    return NULL;
+  }
   ArrayCDT* a = malloc(sizeof(ArrayCDT));
   if (a == NULL) return NULL;
   a->capacity = initialCapacity ? initialCapacity : 1;
