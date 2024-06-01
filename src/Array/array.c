@@ -25,6 +25,10 @@ void* Array_initialize(size_t elementSize, size_t initialCapacity, PrintFn print
   if (a == NULL) return NULL;
   a->capacity = initialCapacity ? initialCapacity : 1;
   a->array = malloc(a->capacity * elementSize);
+  if (a->array == NULL) {
+    free(a);
+    return NULL;
+  }
   a->length = 0;
   a->elementSize = elementSize;
   a->printFn = printFn;
@@ -109,6 +113,7 @@ Array Array_map(Array a, MapFn mapFn, size_t newElemSize, PrintFn newTypePrintFn
 
 Array Array_fromVanillaArray(const void* array, size_t length, size_t elementSize, PrintFn printFn, FreeEleFn freeFn) {
   Array a = Array_initialize(elementSize, length, printFn, freeFn);
+  if (a == NULL) return NULL;
   a->length = length;
   copynEleAt(a, 0, array, length);
   return a;
